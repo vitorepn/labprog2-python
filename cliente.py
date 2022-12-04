@@ -11,7 +11,6 @@ def cliente():
     vitoriasCliente = 0
     vitoriasServidor = 0
     sock.connect((HOST, PORT))
-
     while True:
         contador +=1
         jogadaCliente = calcularJogada()
@@ -22,12 +21,16 @@ def cliente():
         jogadaServidor = int(data.decode().upper())
 
         vencedor = avaliarJogadas(jogadaCliente, jogadaServidor)
-        if(vencedor):
-            vitoriasCliente +=1
-            jogVencedor = "Cliente"
+
+        if(jogadaCliente != jogadaServidor):
+            if(vencedor):
+                vitoriasCliente +=1
+                jogVencedor = "Cliente"
+            else:
+                vitoriasServidor +=1
+                jogVencedor = "Servidor"
         else:
-            vitoriasServidor +=1
-            jogVencedor = "Servidor"
+            jogVencedor = "Empate"
 
         resultado = str(contador) + " - " + "Servidor: " + jogada(jogadaServidor).name + " / " + "Cliente: " + jogada(jogadaCliente).name + " - " + "Vencedor " + jogVencedor
         print(resultado)

@@ -2,6 +2,8 @@ from random import randrange
 import enum
 
 def avaliarJogadas(jogada1,jogada2):
+    if(jogada1 == jogada2):
+        return True
     if(jogada1 == jogada.pedra.value):
         return jogada2 == jogada.tesoura.value or jogada2 == jogada.lagarto.value
     if(jogada1 == jogada.tesoura.value):
