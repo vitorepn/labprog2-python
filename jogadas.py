@@ -19,7 +19,8 @@ def calcularJogada():
 
 class jogada(enum.Enum):
     pedra = 0
+    spock = 1
     papel = 2
     tesoura = 3
     lagarto = 4
-    spock = 1
+

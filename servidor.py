@@ -38,11 +38,11 @@ def servidor():
         palpiteClient = data.decode()
         palpiteServ = calcularJogada()
 
-        print("* O Servidor respondeu:", palpiteServ)  # Apresenta o palpite do servidor
+        print("* O Servidor respondeu:", palpiteServ)
 
         vencedor = avaliarJogadas(palpiteServ,palpiteClient)
 
-        if(vencedor):
+        if(vencedor == True):
             ganhador = 'Servidor'
         else:
             ganhador = 'Cliente'
@@ -50,7 +50,6 @@ def servidor():
         if (palpiteClient == palpiteServ):
             ganhador = 'Empate'
 
-        # String de retorno para o cliente
-        result = '- Cliente: ' + str(palpiteClient) + '\n - Servidor: ' + str(palpiteServ) + '\n=> GANHADOR: ' + str(
-            ganhador) + '\n'
+        result = '- Cliente: ' + str(palpiteClient) + '\n - Servidor: ' + str(palpiteServ) + '\n=> GANHADOR: ' + str(ganhador) + '\n'
         conn.sendall(bytes(str(result), 'utf8'))
+    sock.close()
